@@ -14,6 +14,8 @@
 		F492070E1ED010C10014B1C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F492070C1ED010C10014B1C6 /* LaunchScreen.storyboard */; };
 		F49207191ED010C20014B1C6 /* AsynDisplayDemoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49207181ED010C20014B1C6 /* AsynDisplayDemoTests.swift */; };
 		F49207241ED010C20014B1C6 /* AsynDisplayDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49207231ED010C20014B1C6 /* AsynDisplayDemoUITests.swift */; };
+		F49207321ED011470014B1C6 /* AsynDisplayTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49207311ED011470014B1C6 /* AsynDisplayTableView.swift */; };
+		F49207351ED026E90014B1C6 /* UserModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = F49207341ED026E90014B1C6 /* UserModule.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		F492071F1ED010C20014B1C6 /* AsynDisplayDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AsynDisplayDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F49207231ED010C20014B1C6 /* AsynDisplayDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsynDisplayDemoUITests.swift; sourceTree = "<group>"; };
 		F49207251ED010C20014B1C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F49207311ED011470014B1C6 /* AsynDisplayTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AsynDisplayTableView.swift; path = AsynDisplay/AsynDisplayTableView.swift; sourceTree = "<group>"; };
+		F49207341ED026E90014B1C6 /* UserModule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModule.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,8 +101,10 @@
 		F49207021ED010C10014B1C6 /* AsynDisplayDemo */ = {
 			isa = PBXGroup;
 			children = (
+				F49207331ED011570014B1C6 /* AsyncDisplay */,
 				F49207031ED010C10014B1C6 /* AppDelegate.swift */,
 				F49207051ED010C10014B1C6 /* ViewController.swift */,
+				F49207341ED026E90014B1C6 /* UserModule.swift */,
 				F49207071ED010C10014B1C6 /* Main.storyboard */,
 				F492070A1ED010C10014B1C6 /* Assets.xcassets */,
 				F492070C1ED010C10014B1C6 /* LaunchScreen.storyboard */,
@@ -123,6 +129,14 @@
 				F49207251ED010C20014B1C6 /* Info.plist */,
 			);
 			path = AsynDisplayDemoUITests;
+			sourceTree = "<group>";
+		};
+		F49207331ED011570014B1C6 /* AsyncDisplay */ = {
+			isa = PBXGroup;
+			children = (
+				F49207311ED011470014B1C6 /* AsynDisplayTableView.swift */,
+			);
+			name = AsyncDisplay;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,8 +276,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F49207351ED026E90014B1C6 /* UserModule.swift in Sources */,
 				F49207061ED010C10014B1C6 /* ViewController.swift in Sources */,
 				F49207041ED010C10014B1C6 /* AppDelegate.swift in Sources */,
+				F49207321ED011470014B1C6 /* AsynDisplayTableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

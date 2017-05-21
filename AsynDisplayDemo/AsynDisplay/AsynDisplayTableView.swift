@@ -8,17 +8,47 @@
 
 import UIKit
 
-protocol AsynDisplayModule {
+protocol AsynDisplayModule: NSObjectProtocol {
     
-    func assembly(view: UIView) -> Void
+    var view: UIView { get }
     
-    func didLoad(view: UIView) -> Void
+    func viewWillAddToCell() -> Void
     
 }
 
-class AsynDisplayTableView: UITableView, UITableViewDelegate, UITableViewDataSource {
+protocol AsynDisplayUniteHost: NSObjectProtocol {
+    func reloadCellWithModule(_ module: AsynDisplayModule) -> Void
+}
+
+class AsynDisplayUnit: NSObject, AsynDisplayModule {
     
-    public var moduleList: Array<AsynDisplayModule> = Array() {
+    let view = UIView()
+    final weak var hostDelegate: AsynDisplayUniteHost?
+    
+    func viewWillAddToCell() -> Void {
+        /**
+        let label = UILabel()
+        label.text = "You need override method viewDidLoad() -> Void"
+        label.translatesAutoresizingMaskIntoConstraints = false
+        
+        label.sizeToFit()
+        view.addSubview(label)
+        label.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        label.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+         */
+    }
+    
+    final public func refreshLayout() -> Void {
+        if let host = hostDelegate {
+            weak var weakself = self
+            host.reloadCellWithModule(weakself!)
+        }
+    }
+}
+
+class AsynDisplayTableView: UITableView, UITableViewDelegate, UITableViewDataSource, AsynDisplayUniteHost {
+    
+    public var moduleList: Array<AsynDisplayUnit> = Array<AsynDisplayUnit>() {
         didSet {
             self.reloadData()
         }
@@ -43,11 +73,15 @@ class AsynDisplayTableView: UITableView, UITableViewDelegate, UITableViewDataSou
     private func config() -> Void {
         self.dataSource = self
         self.delegate = self
+        self.separatorStyle = .singleLine
     }
     
     override func reloadData() {
-        for cellIdentifier in Array(moduleList.map({"\(type(of: $0))"})) {
-            self.register(UITableViewCell.self, forCellReuseIdentifier: cellIdentifier)
+        for cellIdentifier in Array(Set(moduleList.map({ (element) -> String in
+            element.hostDelegate = self
+            return "\(type(of: element))"
+        }))) {
+            self.register(AsynDisplayTableViewCell.self, forCellReuseIdentifier: cellIdentifier)
         }
         
         super.reloadData()
@@ -61,24 +95,56 @@ class AsynDisplayTableView: UITableView, UITableViewDelegate, UITableViewDataSou
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let module = moduleList[indexPath.row]
-        var cell = tableView.dequeueReusableCell(withIdentifier: "\(type(of: module))")
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "\(type(of: moduleList[indexPath.row]))")
-            module.assembly(view: cell!.contentView)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "\(type(of: module))", for: indexPath)
+        for subview in cell.contentView.subviews {
+            subview.removeFromSuperview()
         }
         
-        module.didLoad(view: cell!.contentView)
+        cell.contentView.addSubview(module.view)
+        let views = ["view": module.view]
+        module.view.translatesAutoresizingMaskIntoConstraints = false
+        cell.contentView.addConstraints([
+            NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[view]-0-|", options: [], metrics: nil, views: views),
+            NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[view]-0-|", options: [], metrics: nil, views: views)
+            ].flatMap({$0}))
+        module.viewWillAddToCell()
         
-        return cell!
+        return cell
     }
     
     // MARK: UITableViewDelegate
     
     public func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44;
+        let module = moduleList[indexPath.row]
+        return module.view.systemLayoutSizeFitting(UILayoutFittingCompressedSize).height + 1
+    }
+    
+    public func reloadCellWithModule(_ module: AsynDisplayModule) -> Void {
+        let index = moduleList.index { $0 === module }
+        if let findIndex = index {
+            self.reloadRows(at: [IndexPath(row: findIndex, section: 0)], with: .none)
+        }
     }
     
     // MARK: Public method
     
+}
+
+class AsynDisplayTableViewCell: UITableViewCell {
+    
+    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        self.selectionStyle = .none
+        self.contentView.translatesAutoresizingMaskIntoConstraints = false
+        self.backgroundColor = UIColor.white
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        
+        self.selectionStyle = .none
+    }
+
 }
 

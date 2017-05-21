@@ -20,7 +20,7 @@ class ViewController: UIViewController {
         // User module
         let user = UserModule()
         
-        let userVM = UserModuleFetcher(bindModule: user, requestTime:8, requestSuccess: true, image: "avatar_2")
+        let userVM = UserModuleFetcher(bindModule: user, requestTime:6, requestSuccess: true, image: "avatar_2")
         requestList.append(userVM)
         
         // Album module

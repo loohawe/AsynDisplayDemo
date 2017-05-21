@@ -17,7 +17,7 @@ class AlbumModuleFetcher: AsynFetcher {
     override func fetch() {
         
         DispatchQueue(label: "temp").async {
-            sleep(5)
+            sleep(4)
             DispatchQueue.main.async(execute: {
                 let album = AlbumModel()
                 album.status = .success

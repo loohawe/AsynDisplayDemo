@@ -20,7 +20,7 @@ class ArticleModuleFetcher: AsynFetcher {
         
         DispatchQueue(label: "temp").async {
             
-            sleep(5)
+            sleep(6)
             
             DispatchQueue.main.async(execute: {
                 let article = ArticleModel()

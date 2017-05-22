@@ -16,6 +16,10 @@ class ArticleModule: AsynDisplayUnit, AsynFetcherBinded {
     
     override init() {
         super.init()
+        /**
+         再也不手写 constraint 了
+         用 xib 拉界面
+         */
         if let articleView = Bundle.main.loadNibNamed("ArticleModule", owner: self, options: nil)?.first as? UIView {
             articleView.translatesAutoresizingMaskIntoConstraints = false
             
@@ -31,6 +35,9 @@ class ArticleModule: AsynDisplayUnit, AsynFetcherBinded {
         }
     }
     
+    /**
+     网络请求到达, 准备重新绘制界面
+     */
     func fetchedDataModel(model: AsynFetchModel?) -> Void {
         
         self.titleLabel.setViewStatus(.norman)

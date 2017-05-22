@@ -28,9 +28,17 @@ class UserModuleFetcher: AsynFetcher {
     
     override func fetch() {
 
+        /**
+         模拟网络请求
+         */
         DispatchQueue(label: "temp").async {
             sleep(UInt32(self.requestTime))
+            
+            /**
+             格式化数据, 并通知相应的 module
+             */
             DispatchQueue.main.async(execute: {
+                
                 let user = UserModel()
                 if self.requestSuccess {
                 user.status = .success

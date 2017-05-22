@@ -15,6 +15,9 @@ class AlbumModule: AsynDisplayUnit, AsynFetcherBinded {
     override init() {
         super.init()
         
+        /**
+         视图布局
+         */
         albumView = UINib(nibName: "AlbumModule", bundle: nil).instantiate(withOwner: self, options: nil).first as? UIView
         albumView!.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(albumView!)
@@ -30,6 +33,7 @@ class AlbumModule: AsynDisplayUnit, AsynFetcherBinded {
         }
     }
     
+    /**网络请求成功后, 刷新界面*/
     func fetchedDataModel(model: AsynFetchModel?) -> Void {
         if let album = model as? AlbumModel {
             if album.status == .success {

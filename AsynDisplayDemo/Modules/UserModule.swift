@@ -28,7 +28,10 @@ class UserModule: AsynDisplayUnit, AsynFetcherBinded {
     
     override init() {
         super.init()
-        
+        /**
+         视图布局, 为了说明问题, 少引入第三方包, 用了手写 contraint, 写到吐...
+         SnapKit 大法好.
+         */
         view.addSubview(avatarImageView)
         avatarImageView.layer.cornerRadius = 8.0
         avatarImageView.clipsToBounds = true
@@ -63,6 +66,9 @@ class UserModule: AsynDisplayUnit, AsynFetcherBinded {
                                   ].flatMap({$0}))
     }
     
+    /**
+     网络请求到达, 准备重新绘制界面
+     */
     func fetchedDataModel(model: AsynFetchModel?) -> Void {
         if let userModel = model as? UserModel {
             

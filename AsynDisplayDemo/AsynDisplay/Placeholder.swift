@@ -14,6 +14,10 @@ enum UIViewStatus {
     case placeholder
 }
 
+/**
+ 一些视图控件的占位形式, 比如转菊花...
+ */
+
 extension UILabel {
     
     func setViewStatus(_ status: UIViewStatus) -> Void {

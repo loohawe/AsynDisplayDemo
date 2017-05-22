@@ -4,8 +4,6 @@
 
 [![Pod License](http://img.shields.io/cocoapods/l/SDWebImage.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
-异步展示 Demo
-
 ## 集成方式
 
 - 导入类 `AsynDisplayTableView`, `AsynFetcher`, `Placeholder`. 目录名称(AsynDisplayDemo/AsynDisplay)

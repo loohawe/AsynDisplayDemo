@@ -4,8 +4,6 @@
 
 [![Pod License](http://img.shields.io/cocoapods/l/SDWebImage.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
 
-异步展示 Demo
-
 ## 集成方式
 
 - 导入类 `AsynDisplayTableView`, `AsynFetcher`, `Placeholder`. 目录名称(AsynDisplayDemo/AsynDisplay)
@@ -83,4 +81,4 @@ userVM.fetch() // 获取数据
 
 - 高度定制, 实现业务逻辑时, 编码方式类似熟悉的 `UIViewController`, 在 `view`上添加 `subview` 后, 只要保证约束完整正确, 就可以在 `UITableView` 中正确显示.
 
-> 由于时间有限, 仅在 `iOS 10.x` 系统下做个测试, 未测试在其他 iOS 版本. 
+> 由于时间有限, 仅在 `iOS 10.x` 系统下做过测试, 未测试在其他 iOS 版本. 

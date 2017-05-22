@@ -25,6 +25,8 @@ class UserModule: AsynDisplayUnit {
         subview.addConstraints(...)
         view.addConstraints(...)
         ...
+     }
+}
 ```
 
 ### 业务数据获取

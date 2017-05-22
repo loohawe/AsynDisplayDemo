@@ -1,5 +1,5 @@
 <p align="center" >
-  <img src="https://raw.github.com/AFNetworking/AFNetworking/assets/afnetworking-logo.png" alt="AFNetworking" title="AFNetworking">
+  <img src="https://github.com/loohawe/AsynDisplayDemo/blob/master/AsynDisplay.png" alt="AsynDisplayDemo" title="AsynDisplayDemo">
 </p>
 
 [![Pod License](http://img.shields.io/cocoapods/l/SDWebImage.svg?style=flat)](https://www.apache.org/licenses/LICENSE-2.0.html)
@@ -25,6 +25,8 @@ class UserModule: AsynDisplayUnit {
         subview.addConstraints(...)
         view.addConstraints(...)
         ...
+     }
+}
 ```
 
 ### 业务数据获取

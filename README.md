@@ -59,7 +59,7 @@ userVM.fetch() // 获取数据
 ## 设计思路
 
 <p align="center" >
-  <img src="https://github.com/loohawe/AsynDisplayDemo/blob/master/design_structure.pdf" alt="AsynDisplayDemo" title="AsynDisplayDemo">
+  <img src="https://github.com/loohawe/AsynDisplayDemo/blob/master/design_structure.jpg" alt="AsynDisplayDemo" title="AsynDisplayDemo">
 </p>
 
 分为三个功能块

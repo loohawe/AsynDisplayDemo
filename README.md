@@ -67,7 +67,7 @@ userVM.fetch() // 获取数据
 分为三个功能块
 1. 视图展示 `AsynDisplayUnit`
 
-	设计参考 `UIViewController`. `Unit` 持有 `view`, 在 `view` 上定制需要展示的数据, 最终这个 `view` 会被添加到 `UITableViewCell`上. `view` 上的 `subview` 可完全定制, 以应付多遍的需求. 同时实现数据获取的协议, 当数据获取成功后, 能够接收重新绘制视同的通知.
+	设计参考 `UIViewController`. `Unit` 持有 `view`, 在 `view` 上定制需要展示的数据, 最终这个 `view` 会被添加到 `UITableViewCell`上. `view` 上的 `subview` 可完全定制, 以应付多变的需求. 同时实现数据获取的协议, 当数据获取成功后, 能够接收重新绘制视同的通知.
 
 2. 数据获取 `AsynFetcher`
 	
@@ -75,7 +75,7 @@ userVM.fetch() // 获取数据
 
 3. 展示引擎 `AsynDisplayTableView` 主要由 `UITableView` 实现
 	
-	内部由 `UITableView` 实现, 当有 `unit` 注册时, 添加 `unit.view` 到 `UITableViewCell`. 保证 `UITableViewCell` 的复用, 已经 `UITableViewCell` 高度的正确获取.
+	内部由 `UITableView` 实现, 当有 `unit` 注册时, 添加 `unit.view` 到 `UITableViewCell`. 保证 `UITableViewCell` 的复用, 以及 `UITableViewCell` 高度的正确获取.
 
 ## 优势
 
